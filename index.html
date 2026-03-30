@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feluka - Marketing Audit</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+            color: #d4af84;
+            scroll-behavior: smooth;
+        }
+        
+        .slide {
+            width: 100vw;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 40px;
+            flex-direction: column;
+            border-bottom: 1px solid rgba(212, 175, 132, 0.1);
+            scroll-snap-align: start;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+        }
+        
+        .slide.cover {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a1810 100%);
+            text-align: center;
+            min-height: 100vh;
+        }
+        
+        .logo {
+            font-size: 13px;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            opacity: 0.7;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 72px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 20px;
+            opacity: 0.6;
+            margin-bottom: 60px;
+        }
+        
+        .slide h2 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 48px;
+            margin-bottom: 40px;
+            font-weight: 700;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+        
+        .insight-box {
+            background: rgba(212, 175, 132, 0.06);
+            padding: 25px;
+            border-left: 3px solid #d4af84;
+            border-radius: 4px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        .stat-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            width: 100%;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af84;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 42px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .gap-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .gap-item {
+            background: rgba(212, 175, 132, 0.05);
+            padding: 25px;
+            border-radius: 6px;
+            border-top: 2px solid #d4af84;
+        }
+        
+        .gap-item strong {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+        
+        .gap-item p {
+            font-size: 13px;
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+        
+        .service-card {
+            background: rgba(212, 175, 132, 0.06);
+            border: 1px solid rgba(212, 175, 132, 0.15);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        
+        .service-card.gold1 {
+            border-top: 3px solid #d4af84;
+        }
+        
+        .service-card.gold2 {
+            border-top: 3px solid #c9a876;
+        }
+        
+        .service-card.gold3 {
+            border-top: 3px solid #b3ad7f;
+        }
+        
+        .service-card.gold4 {
+            border-top: 3px solid #a0956a;
+        }
+        
+        .service-card.gold5 {
+            border-top: 3px solid #8b8560;
+        }
+        
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .service-card strong {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 10px;
+            color: #d4af84;
+        }
+        
+        .service-card p {
+            font-size: 12px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .chart-box {
+            background: rgba(212, 175, 132, 0.03);
+            border: 1px solid rgba(212, 175, 132, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .chart-box h3 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+        
+        .chart-container {
+            position: relative;
+            height: 280px;
+            margin-bottom: 20px;
+        }
+        
+        .insight-text {
+            background: rgba(212, 175, 132, 0.06);
+            padding: 20px;
+            border-left: 3px solid #d4af84;
+            font-size: 14px;
+            line-height: 1.7;
+        }
+        
+        .timeline-horizontal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-block {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af84;
+        }
+        
+        .timeline-block .period {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .timeline-block strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 10px;
+        }
+        
+        .timeline-block p {
+            font-size: 13px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-block {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af84;
+        }
+        
+        .metric-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            margin: 12px 0;
+            font-weight: 700;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .metric-desc {
+            font-size: 12px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .our-role {
+            background: linear-gradient(135deg, rgba(212, 175, 132, 0.1) 0%, rgba(212, 175, 132, 0.05) 100%);
+            padding: 30px;
+            border-left: 4px solid #d4af84;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 15px;
+            line-height: 1.8;
+        }
+        
+        .explanation {
+            background: rgba(212, 175, 132, 0.04);
+            padding: 25px;
+            border-left: 3px solid #d4af84;
+            border-radius: 4px;
+            font-size: 14px;
+            line-height: 1.8;
+            margin-top: 30px;
+        }
+        
+        @media (max-width: 1024px) {
+            .two-column { grid-template-columns: 1fr; }
+            .gap-grid { grid-template-columns: 1fr; }
+            .service-grid { grid-template-columns: repeat(3, 1fr); }
+            .timeline-horizontal { grid-template-columns: 1fr; }
+            .metric-grid { grid-template-columns: 1fr; }
+            h1 { font-size: 48px; }
+            .slide h2 { font-size: 36px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- SLIDE 1: COVER -->
+    <div class="slide cover">
+        <div class="logo">ELITE CONSULTANT</div>
+        <h1>Feluka Restaurant</h1>
+        <p class="subtitle">Marketing Audit & Growth Strategy</p>
+        <p class="subtitle" style="font-size: 16px; margin-top: 80px; opacity: 0.5;">How to reclaim lost visibility and convert dormant channels into revenue engines</p>
+    </div>
+
+    <!-- SLIDE 2: THE SITUATION -->
+    <div class="slide">
+        <div class="container">
+            <h2>The Paradox</h2>
+            <div class="stat-row">
+                <div class="stat-card">
+                    <div class="stat-number">4.6★</div>
+                    <div class="stat-label">Google Rating</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">3,774</div>
+                    <div class="stat-label">Reviews</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">82%</div>
+                    <div class="stat-label">Recommend Rate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Posts (50 weeks)</div>
+                </div>
+            </div>
+            
+            <div class="explanation">
+                <strong>What this means:</strong> Feluka has built exceptional product quality. Every metric proves it. Customers love the experience, rate it highly, and recommend it. But this reputation exists only in Google reviews and word of mouth. On the platforms where people discover restaurants daily (Instagram, TikTok, Facebook), Feluka is invisible. The brand has built trust but lost discoverability.
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: THE GAPS -->
+    <div class="slide">
+        <div class="container">
+            <h2>What's Being Lost</h2>
+            <div class="gap-grid">
+                <div class="gap-item">
+                    <strong>Discovery</strong>
+                    <p>Every week, customers search for premium seafood in Riyadh. Competitors' Reels appear. Feluka doesn't. This is active revenue loss.</p>
+                </div>
+                <div class="gap-item">
+                    <strong>Consistency Signal</strong>
+                    <p>Active feeds signal quality and vitality. Silent feeds signal decline. For premium dining, perception shapes decision. 50 weeks of silence is a perception problem.</p>
+                </div>
+                <div class="gap-item">
+                    <strong>Video Moat</strong>
+                    <p>80% of restaurant discovery now happens via short form video. Feluka has none. Competitors own this channel entirely.</p>
+                </div>
+            </div>
+            
+            <div class="insight-box">
+                <strong>The cost:</strong> Feluka loses approximately 40 to 60 reservations monthly from digital discovery alone. That's $9,000 to $13,500 in lost revenue every month.
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: HOW WE FIX IT -->
+    <div class="slide">
+        <div class="container">
+            <h2>Elite Consultant's Approach</h2>
+            <div class="service-grid">
+                <div class="service-card gold1">
+                    <span class="service-icon">🔍</span>
+                    <strong>Audit & Strategy</strong>
+                    <p>We assess all platforms, extract your brand voice, and design a content calendar aligned to your seasonality and audience psychology.</p>
+                </div>
+                <div class="service-card gold2">
+                    <span class="service-icon">🎬</span>
+                    <strong>Content Production</strong>
+                    <p>We produce 15 to 20 short form videos monthly. Reels, TikTok, Shorts. Professional, on brand, optimized for discovery and engagement.</p>
+                </div>
+                <div class="service-card gold3">
+                    <span class="service-icon">📱</span>
+                    <strong>Daily Management</strong>
+                    <p>We handle posting, community engagement, hashtag strategy, and cross platform amplification. You focus on operations. We amplify your brand.</p>
+                </div>
+                <div class="service-card gold4">
+                    <span class="service-icon">📊</span>
+                    <strong>Performance Tracking</strong>
+                    <p>We track every metric: reach, engagement, conversions, and reservation attribution. Weekly reporting shows exactly what's working.</p>
+                </div>
+                <div class="service-card gold5">
+                    <span class="service-icon">🎯</span>
+                    <strong>Optimization</strong>
+                    <p>We test content angles, posting times, and platform strategies. Every week improves performance. Data drives all decisions.</p>
+                </div>
+            </div>
+            
+            <div class="our-role">
+                <strong>What this means for Feluka:</strong> You don't manage social media. We do. You don't create content. We do. You don't analyze metrics. We do. You run a world class restaurant. We make sure the world knows about it.
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: THE EXECUTION PLAN -->
+    <div class="slide">
+        <div class="container">
+            <h2>90 Day Roadmap</h2>
+            <div class="timeline-horizontal">
+                <div class="timeline-block">
+                    <div class="period">Weeks 1 to 2</div>
+                    <strong>Blueprint & Mining</strong>
+                    <p>We audit platforms, interview your team, document your story, and create a comprehensive content strategy calendar.</p>
+                </div>
+                <div class="timeline-block">
+                    <div class="period">Weeks 3 to 6</div>
+                    <strong>Production Launch</strong>
+                    <p>We produce and launch 15 to 20 videos. Instagram and TikTok go live with daily posting. Consistent cadence established.</p>
+                </div>
+                <div class="timeline-block">
+                    <div class="period">Weeks 7 to 12+</div>
+                    <strong>Growth & Scale</strong>
+                    <p>Daily management continues. Performance metrics tracked. Optimization applied weekly. Audience grows. Engagement compounds.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: REVENUE IMPACT -->
+    <div class="slide">
+        <div class="container">
+            <h2>The Business Case</h2>
+            <div class="two-column">
+                <div class="chart-box">
+                    <h3>Year One Revenue Projection</h3>
+                    <div class="chart-container">
+                        <canvas id="revenueChart"></canvas>
+                    </div>
+                    <div class="insight-text">
+                        Conservative estimate: 40 additional reservations monthly from digital visibility. At $225 average check, that's $9,000 monthly in incremental revenue. Quarters accelerate as audience grows and algorithm prioritizes your active account.
+                    </div>
+                </div>
+                <div class="metric-grid" style="margin-top: 0;">
+                    <div class="metric-block">
+                        <div class="metric-label">Monthly Investment</div>
+                        <div class="metric-value">$2,500</div>
+                        <div class="metric-desc">Content creation, production, posting, management, and analysis.</div>
+                    </div>
+                    <div class="metric-block">
+                        <div class="metric-label">Monthly Revenue Gain</div>
+                        <div class="metric-value">$9,000</div>
+                        <div class="metric-desc">From 40 additional reservations at average check value.</div>
+                    </div>
+                    <div class="metric-block">
+                        <div class="metric-label">Payback Period</div>
+                        <div class="metric-value">3 Months</div>
+                        <div class="metric-desc">After month 3, pure incremental profit. 260% ROI year one.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 7: WHAT CHANGES -->
+    <div class="slide">
+        <div class="container">
+            <h2>The Transformation</h2>
+            <div class="two-column">
+                <div>
+                    <h3 style="font-size: 28px; margin-bottom: 25px;">Before Elite Consultant</h3>
+                    <ul style="list-style: none; font-size: 14px; opacity: 0.8; line-height: 2;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Instagram: 50 weeks silent</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">TikTok: Minimal activity</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Video content: Zero</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Discoverability: Low</li>
+                        <li style="padding: 10px 0;">Lost reservations: 40 to 60 monthly</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 style="font-size: 28px; margin-bottom: 25px;">After Elite Consultant (90 Days)</h3>
+                    <ul style="list-style: none; font-size: 14px; opacity: 0.8; line-height: 2;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Instagram: Daily posting</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">TikTok: 3x weekly videos</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Video content: 15 to 20 monthly</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Discoverability: Algorithm-prioritized</li>
+                        <li style="padding: 10px 0;">Recovered reservations: 40 to 60 monthly</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: FINAL CALL -->
+    <div class="slide cover" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1810 100%);">
+        <h1 style="font-size: 56px; line-height: 1.3;">Feluka has built the brand.</h1>
+        <p class="subtitle" style="margin: 30px 0 0 0; font-size: 18px;">Now we amplify it.</p>
+        <div style="margin-top: 80px; padding: 30px; background: rgba(212, 175, 132, 0.08); border-left: 4px solid #d4af84; border-radius: 4px;">
+            <p style="font-size: 15px; line-height: 1.8;">Elite Consultant brings proven restaurant marketing expertise. We handle production, posting, engagement, and optimization. You run operations. Together, we turn dormant channels into revenue engines.</p>
+        </div>
+    </div>
+
+    <script>
+        // Chart: Revenue
+        const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+        new Chart(revenueCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Incremental Revenue',
+                    data: [15000, 30000, 45000, 60000],
+                    backgroundColor: ['#8b7355', '#a0956a', '#b3ad7f', '#d4af84'],
+                    borderRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { labels: { color: '#d4af84' } } },
+                scales: {
+                    y: { ticks: { color: '#d4af84' }, grid: { color: 'rgba(212, 175, 132, 0.1)' } },
+                    x: { ticks: { color: '#d4af84' }, grid: { display: false } }
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
