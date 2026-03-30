@@ -14,8 +14,8 @@
         
         body {
             font-family: 'Times New Roman', Times, serif;
-            background: #0a0e27;
-            color: #d4af84;
+            background: #000000;
+            color: #ffffff;
             scroll-behavior: smooth;
         }
         
@@ -27,19 +27,8 @@
             justify-content: center;
             padding: 60px 40px;
             flex-direction: column;
-            border-bottom: 2px solid #d4af84;
+            border-bottom: 1px solid rgba(212, 175, 132, 0.2);
             scroll-snap-align: start;
-            position: relative;
-        }
-        
-        .slide::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, #d4af84, transparent);
         }
         
         .container {
@@ -48,23 +37,16 @@
         }
         
         .slide.cover {
-            background: #0a0e27;
+            background: #000000;
             text-align: center;
             min-height: 100vh;
         }
         
-        .header-line {
-            width: 200px;
-            height: 1px;
-            background: #d4af84;
-            margin: 0 auto 40px;
-        }
-        
         .logo {
             font-size: 13px;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             margin-bottom: 40px;
-            opacity: 0.7;
+            opacity: 0.9;
             color: #d4af84;
         }
         
@@ -77,38 +59,35 @@
         }
         
         .subtitle {
-            font-size: 18px;
-            opacity: 0.6;
+            font-size: 20px;
+            opacity: 0.8;
             margin-bottom: 60px;
-            color: #d4af84;
+            color: #ffffff;
         }
         
         .slide h2 {
             font-family: 'Playfair Display', Georgia, serif;
             font-size: 48px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             font-weight: 700;
             color: #d4af84;
-            position: relative;
-            padding-bottom: 20px;
-        }
-        
-        .slide h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 1px;
-            background: #d4af84;
         }
         
         .two-column {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 50px;
+            gap: 40px;
             align-items: start;
+        }
+        
+        .insight-box {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-left: 3px solid #d4af84;
+            border-radius: 4px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #ffffff;
         }
         
         .stat-row {
@@ -116,80 +95,61 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             width: 100%;
-            margin: 40px 0;
+            margin-bottom: 30px;
         }
         
         .stat-card {
             background: rgba(212, 175, 132, 0.08);
-            padding: 30px;
-            border-radius: 0;
-            border-top: 2px solid #d4af84;
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af84;
             text-align: center;
+            color: #ffffff;
         }
         
         .stat-number {
             font-family: 'Playfair Display', Georgia, serif;
-            font-size: 48px;
-            margin: 15px 0;
+            font-size: 42px;
+            margin-bottom: 10px;
             font-weight: 700;
             color: #d4af84;
         }
         
         .stat-label {
-            font-size: 11px;
+            font-size: 12px;
             opacity: 0.7;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #d4af84;
-        }
-        
-        .explanation {
-            background: rgba(212, 175, 132, 0.06);
-            padding: 30px;
-            border-left: 3px solid #d4af84;
-            border-radius: 0;
-            font-size: 15px;
-            line-height: 1.8;
-            margin-top: 30px;
+            letter-spacing: 1px;
+            color: #ffffff;
         }
         
         .gap-grid {
             display: grid;
             grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            margin: 40px 0;
+            gap: 25px;
+            margin-bottom: 40px;
         }
         
         .gap-item {
-            background: rgba(212, 175, 132, 0.05);
-            padding: 30px;
-            border-radius: 0;
-            border-top: 3px solid #d4af84;
-            text-align: center;
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-radius: 6px;
+            border-top: 2px solid #d4af84;
+            color: #ffffff;
         }
         
         .gap-item strong {
             display: block;
-            font-size: 18px;
-            margin-bottom: 15px;
+            font-size: 16px;
+            margin-bottom: 12px;
             color: #d4af84;
         }
         
         .gap-item p {
-            font-size: 14px;
-            opacity: 0.8;
-            line-height: 1.7;
-        }
-        
-        .insight-box {
-            background: rgba(212, 175, 132, 0.08);
-            padding: 30px;
-            border-left: 3px solid #d4af84;
-            border-radius: 0;
             font-size: 15px;
-            line-height: 1.8;
-            margin-top: 30px;
-            color: #d4af84;
+            opacity: 0.9;
+            line-height: 1.6;
+            color: #ffffff;
         }
         
         .service-grid {
@@ -200,177 +160,67 @@
         }
         
         .service-card {
-            background: rgba(212, 175, 132, 0.06);
-            border-top: 2px solid #d4af84;
+            background: rgba(212, 175, 132, 0.08);
+            border: 1px solid rgba(212, 175, 132, 0.2);
             padding: 25px;
-            border-radius: 0;
+            border-radius: 8px;
             text-align: center;
+            color: #ffffff;
         }
         
-        .service-card.color1 {
-            border-top-color: #d4af84;
+        .service-card.gold1 {
+            border-top: 3px solid #d4af84;
         }
         
-        .service-card.color2 {
-            border-top-color: #c9a876;
+        .service-card.gold2 {
+            border-top: 3px solid #c9a876;
         }
         
-        .service-card.color3 {
-            border-top-color: #b8a668;
+        .service-card.gold3 {
+            border-top: 3px solid #b3ad7f;
         }
         
-        .service-card.color4 {
-            border-top-color: #a79a5a;
+        .service-card.gold4 {
+            border-top: 3px solid #a0956a;
         }
         
-        .service-card.color5 {
-            border-top-color: #968e4c;
+        .service-card.gold5 {
+            border-top: 3px solid #8b8560;
         }
         
         .service-icon {
-            font-size: 28px;
-            margin-bottom: 15px;
+            font-size: 32px;
+            margin-bottom: 12px;
             display: block;
-            opacity: 0.8;
         }
         
         .service-card strong {
             display: block;
             font-size: 14px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             color: #d4af84;
-            font-weight: 600;
         }
         
         .service-card p {
-            font-size: 12px;
+            font-size: 14px;
             opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .timeline-horizontal {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .timeline-block {
-            background: rgba(212, 175, 132, 0.06);
-            padding: 30px;
-            border-radius: 0;
-            border-top: 3px solid #d4af84;
-        }
-        
-        .timeline-block .period {
-            font-size: 11px;
-            opacity: 0.6;
-            margin-bottom: 12px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: #d4af84;
-        }
-        
-        .timeline-block strong {
-            display: block;
-            font-size: 16px;
-            margin-bottom: 12px;
-            color: #d4af84;
-        }
-        
-        .timeline-block p {
-            font-size: 13px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .metric-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            margin: 40px 0;
-        }
-        
-        .metric-block {
-            background: rgba(212, 175, 132, 0.06);
-            padding: 30px;
-            border-radius: 0;
-            border-top: 3px solid #d4af84;
-            text-align: center;
-        }
-        
-        .metric-value {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 42px;
-            margin: 12px 0;
-            font-weight: 700;
-            color: #d4af84;
-        }
-        
-        .metric-label {
-            font-size: 11px;
-            opacity: 0.7;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 8px;
-            color: #d4af84;
-        }
-        
-        .metric-desc {
-            font-size: 12px;
-            opacity: 0.8;
-            line-height: 1.6;
-        }
-        
-        .comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin: 40px 0;
-        }
-        
-        .comparison-col h3 {
-            font-family: 'Playfair Display', Georgia, serif;
-            font-size: 24px;
-            margin-bottom: 25px;
-            color: #d4af84;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #d4af84;
-        }
-        
-        .comparison-col ul {
-            list-style: none;
-        }
-        
-        .comparison-col li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(212, 175, 132, 0.1);
-            font-size: 13px;
-            opacity: 0.85;
-        }
-        
-        .our-role {
-            background: rgba(212, 175, 132, 0.1);
-            padding: 35px;
-            border-left: 3px solid #d4af84;
-            border-radius: 0;
-            margin-top: 30px;
-            font-size: 15px;
-            line-height: 1.8;
+            line-height: 1.5;
         }
         
         .chart-box {
-            background: rgba(212, 175, 132, 0.04);
-            border-top: 2px solid #d4af84;
+            background: rgba(212, 175, 132, 0.08);
+            border: 1px solid rgba(212, 175, 132, 0.2);
             padding: 30px;
-            border-radius: 0;
+            border-radius: 8px;
+            color: #ffffff;
         }
         
         .chart-box h3 {
             font-size: 16px;
-            margin-bottom: 25px;
-            color: #d4af84;
+            margin-bottom: 20px;
+            opacity: 0.9;
             font-weight: 600;
+            color: #d4af84;
         }
         
         .chart-container {
@@ -380,12 +230,109 @@
         }
         
         .insight-text {
-            background: rgba(212, 175, 132, 0.06);
+            background: rgba(212, 175, 132, 0.08);
             padding: 20px;
             border-left: 3px solid #d4af84;
-            font-size: 13px;
+            font-size: 16px;
             line-height: 1.7;
-            margin-top: 15px;
+            color: #ffffff;
+        }
+        
+        .timeline-horizontal {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline-block {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af84;
+            color: #ffffff;
+        }
+        
+        .timeline-block .period {
+            font-size: 11px;
+            opacity: 0.6;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+        
+        .timeline-block strong {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 10px;
+            color: #d4af84;
+        }
+        
+        .timeline-block p {
+            font-size: 15px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-block {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-radius: 6px;
+            border-left: 3px solid #d4af84;
+            color: #ffffff;
+        }
+        
+        .metric-value {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 38px;
+            margin: 12px 0;
+            font-weight: 700;
+            color: #d4af84;
+        }
+        
+        .metric-label {
+            font-size: 11px;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        
+        .metric-desc {
+            font-size: 14px;
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+        
+        .our-role {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 30px;
+            border-left: 4px solid #d4af84;
+            border-radius: 4px;
+            margin-top: 30px;
+            font-size: 17px;
+            line-height: 1.8;
+            color: #ffffff;
+        }
+        
+        .explanation {
+            background: rgba(212, 175, 132, 0.08);
+            padding: 25px;
+            border-left: 3px solid #d4af84;
+            border-radius: 4px;
+            font-size: 16px;
+            line-height: 1.8;
+            margin-top: 30px;
+            color: #ffffff;
         }
         
         @media (max-width: 1024px) {
@@ -394,7 +341,6 @@
             .service-grid { grid-template-columns: repeat(3, 1fr); }
             .timeline-horizontal { grid-template-columns: 1fr; }
             .metric-grid { grid-template-columns: 1fr; }
-            .comparison { grid-template-columns: 1fr; }
             h1 { font-size: 48px; }
             .slide h2 { font-size: 36px; }
         }
@@ -404,7 +350,6 @@
 
     <!-- SLIDE 1: COVER -->
     <div class="slide cover">
-        <div class="header-line"></div>
         <div class="logo">ELITE CONSULTANT</div>
         <h1>Feluka Restaurant</h1>
         <p class="subtitle">Marketing Audit & Growth Strategy</p>
@@ -465,32 +410,32 @@
         </div>
     </div>
 
-    <!-- SLIDE 4: OUR SERVICES -->
+    <!-- SLIDE 4: HOW WE FIX IT -->
     <div class="slide">
         <div class="container">
             <h2>Elite Consultant's Approach</h2>
             <div class="service-grid">
-                <div class="service-card color1">
+                <div class="service-card gold1">
                     <span class="service-icon">🔍</span>
                     <strong>Audit & Strategy</strong>
                     <p>We assess all platforms, extract your brand voice, and design a content calendar aligned to your seasonality and audience psychology.</p>
                 </div>
-                <div class="service-card color2">
+                <div class="service-card gold2">
                     <span class="service-icon">🎬</span>
                     <strong>Content Production</strong>
                     <p>We produce 15 to 20 short form videos monthly. Reels, TikTok, Shorts. Professional, on brand, optimized for discovery and engagement.</p>
                 </div>
-                <div class="service-card color3">
+                <div class="service-card gold3">
                     <span class="service-icon">📱</span>
                     <strong>Daily Management</strong>
                     <p>We handle posting, community engagement, hashtag strategy, and cross platform amplification. You focus on operations. We amplify your brand.</p>
                 </div>
-                <div class="service-card color4">
+                <div class="service-card gold4">
                     <span class="service-icon">📊</span>
                     <strong>Performance Tracking</strong>
                     <p>We track every metric: reach, engagement, conversions, and reservation attribution. Weekly reporting shows exactly what's working.</p>
                 </div>
-                <div class="service-card color5">
+                <div class="service-card gold5">
                     <span class="service-icon">🎯</span>
                     <strong>Optimization</strong>
                     <p>We test content angles, posting times, and platform strategies. Every week improves performance. Data drives all decisions.</p>
@@ -503,7 +448,7 @@
         </div>
     </div>
 
-    <!-- SLIDE 5: EXECUTION PLAN -->
+    <!-- SLIDE 5: THE EXECUTION PLAN -->
     <div class="slide">
         <div class="container">
             <h2>90 Day Roadmap</h2>
@@ -527,11 +472,11 @@
         </div>
     </div>
 
-    <!-- SLIDE 6: REVENUE -->
+    <!-- SLIDE 6: REVENUE IMPACT -->
     <div class="slide">
         <div class="container">
             <h2>The Business Case</h2>
-            <div class="two-column">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
                 <div class="chart-box">
                     <h3>Year One Revenue Projection</h3>
                     <div class="chart-container">
@@ -541,69 +486,76 @@
                         Conservative estimate: 40 additional reservations monthly from digital visibility. At $225 average check, that's $9,000 monthly in incremental revenue. Quarters accelerate as audience grows and algorithm prioritizes your active account.
                     </div>
                 </div>
-                <div class="metric-grid" style="margin-top: 0;">
-                    <div class="metric-block">
-                        <div class="metric-label">Monthly Investment</div>
-                        <div class="metric-value">$2,500</div>
-                        <div class="metric-desc">Content creation, production, posting, management, and analysis.</div>
+                <div class="chart-box">
+                    <h3>Audience Growth Projection (90 Days)</h3>
+                    <div class="chart-container">
+                        <canvas id="growthChart"></canvas>
                     </div>
-                    <div class="metric-block">
-                        <div class="metric-label">Monthly Revenue Gain</div>
-                        <div class="metric-value">$9,000</div>
-                        <div class="metric-desc">From 40 additional reservations at average check value.</div>
+                    <div class="insight-text">
+                        Consistent daily posting drives exponential growth. Instagram followers grow from baseline to 5,000 to 7,000. TikTok from zero to 10,000 to 15,000. This creates algorithmic momentum that compounds long term.
                     </div>
-                    <div class="metric-block">
-                        <div class="metric-label">Payback Period</div>
-                        <div class="metric-value">3 Months</div>
-                        <div class="metric-desc">After month 3, pure incremental profit. 260% ROI year one.</div>
-                    </div>
+                </div>
+            </div>
+            <div class="metric-grid" style="margin-top: 40px;">
+                <div class="metric-block">
+                    <div class="metric-label">Monthly Investment</div>
+                    <div class="metric-value">$2,500</div>
+                    <div class="metric-desc">Content creation, production, posting, management, and analysis.</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-label">Monthly Revenue Gain</div>
+                    <div class="metric-value">$9,000</div>
+                    <div class="metric-desc">From 40 additional reservations at average check value.</div>
+                </div>
+                <div class="metric-block">
+                    <div class="metric-label">Payback Period</div>
+                    <div class="metric-value">3 Months</div>
+                    <div class="metric-desc">After month 3, pure incremental profit. 260 percent ROI year one.</div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 7: TRANSFORMATION -->
+    <!-- SLIDE 7: WHAT CHANGES -->
     <div class="slide">
         <div class="container">
             <h2>The Transformation</h2>
-            <div class="comparison">
-                <div class="comparison-col">
-                    <h3>Before Elite Consultant</h3>
-                    <ul>
-                        <li>Instagram: 50 weeks silent</li>
-                        <li>TikTok: Minimal activity</li>
-                        <li>Video content: Zero</li>
-                        <li>Discoverability: Low</li>
-                        <li>Reservations: Declining</li>
-                        <li>Algorithm priority: Deprioritized</li>
+            <div class="two-column">
+                <div>
+                    <h3 style="font-size: 28px; margin-bottom: 25px;">Before Elite Consultant</h3>
+                    <ul style="list-style: none; font-size: 15px; opacity: 0.8; line-height: 2;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Instagram: 50 weeks silent</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">TikTok: Minimal activity</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Video content: Zero</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Discoverability: Low</li>
+                        <li style="padding: 10px 0;">Lost reservations: 40 to 60 monthly</li>
                     </ul>
                 </div>
-                <div class="comparison-col">
-                    <h3>After Elite Consultant (90 Days)</h3>
-                    <ul>
-                        <li>Instagram: Daily posting</li>
-                        <li>TikTok: 3x weekly videos</li>
-                        <li>Video content: 15 to 20 monthly</li>
-                        <li>Discoverability: Algorithm optimized</li>
-                        <li>Reservations: Growing 40 to 60 monthly</li>
-                        <li>Algorithm priority: Prioritized & scaled</li>
+                <div>
+                    <h3 style="font-size: 28px; margin-bottom: 25px;">After Elite Consultant (90 Days)</h3>
+                    <ul style="list-style: none; font-size: 15px; opacity: 0.8; line-height: 2;">
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Instagram: Daily posting</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">TikTok: 3x weekly videos</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Video content: 15 to 20 monthly</li>
+                        <li style="padding: 10px 0; border-bottom: 1px solid rgba(212, 175, 132, 0.1);">Discoverability: Algorithm prioritized</li>
+                        <li style="padding: 10px 0;">Recovered reservations: 40 to 60 monthly</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- SLIDE 8: FINAL -->
-    <div class="slide cover">
-        <div class="header-line"></div>
+    <!-- SLIDE 8: FINAL CALL -->
+    <div class="slide cover" style="background: linear-gradient(135deg, #1a1a1a 0%, #2a1810 100%);">
         <h1 style="font-size: 56px; line-height: 1.3;">Feluka has built the brand.</h1>
         <p class="subtitle" style="margin: 30px 0 0 0; font-size: 18px;">Now we amplify it.</p>
-        <div style="margin-top: 80px; padding: 35px; background: rgba(212, 175, 132, 0.08); border-left: 3px solid #d4af84; border-radius: 0;">
-            <p style="font-size: 15px; line-height: 1.8;">Elite Consultant brings proven restaurant marketing expertise. We handle production, posting, engagement, and optimization. You run operations. Together, we turn dormant channels into revenue engines.</p>
+        <div style="margin-top: 80px; padding: 30px; background: rgba(212, 175, 132, 0.08); border-left: 4px solid #d4af84; border-radius: 4px;">
+            <p style="font-size: 17px; line-height: 1.8;">Elite Consultant brings proven restaurant marketing expertise. We handle production, posting, engagement, and optimization. You run operations. Together, we turn dormant channels into revenue engines.</p>
         </div>
     </div>
 
     <script>
+        // Chart: Revenue
         const revenueCtx = document.getElementById('revenueChart').getContext('2d');
         new Chart(revenueCtx, {
             type: 'bar',
@@ -612,17 +564,56 @@
                 datasets: [{
                     label: 'Incremental Revenue',
                     data: [15000, 30000, 45000, 60000],
-                    backgroundColor: ['#968e4c', '#a79a5a', '#b8a668', '#d4af84'],
-                    borderRadius: 0
+                    backgroundColor: ['#8b7355', '#a0956a', '#b3ad7f', '#d4af84'],
+                    borderRadius: 6
                 }]
             },
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                plugins: { legend: { labels: { color: '#d4af84', font: { size: 12 } } } },
+                plugins: { legend: { labels: { color: '#d4af84' } } },
                 scales: {
-                    y: { ticks: { color: '#d4af84', font: { size: 11 } }, grid: { color: 'rgba(212, 175, 132, 0.1)' } },
-                    x: { ticks: { color: '#d4af84', font: { size: 11 } }, grid: { display: false } }
+                    y: { ticks: { color: '#d4af84' }, grid: { color: 'rgba(212, 175, 132, 0.1)' } },
+                    x: { ticks: { color: '#d4af84' }, grid: { display: false } }
+                }
+            }
+        });
+
+        // Chart: Growth Projection
+        const growthCtx = document.getElementById('growthChart').getContext('2d');
+        new Chart(growthCtx, {
+            type: 'line',
+            data: {
+                labels: ['Week 1', 'Week 2', 'Week 4', 'Week 6', 'Week 8', 'Week 10', 'Week 12'],
+                datasets: [
+                    {
+                        label: 'Instagram Followers',
+                        data: [2500, 2800, 3500, 4200, 5000, 5800, 6500],
+                        borderColor: '#d4af84',
+                        backgroundColor: 'rgba(212, 175, 132, 0.1)',
+                        tension: 0.3,
+                        fill: true,
+                        borderWidth: 3
+                    },
+                    {
+                        label: 'TikTok Followers',
+                        data: [100, 300, 1200, 3500, 6000, 9000, 12500],
+                        borderColor: '#b3ad7f',
+                        backgroundColor: 'rgba(179, 173, 127, 0.05)',
+                        tension: 0.3,
+                        borderWidth: 3
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { labels: { color: '#d4af84', font: { size: 12 } } }
+                },
+                scales: {
+                    y: { ticks: { color: '#d4af84' }, grid: { color: 'rgba(212, 175, 132, 0.1)' } },
+                    x: { ticks: { color: '#d4af84' }, grid: { color: 'rgba(212, 175, 132, 0.1)' } }
                 }
             }
         });
